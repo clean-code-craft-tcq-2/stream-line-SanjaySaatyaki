@@ -2,6 +2,7 @@
 
 import unittest
 import sender
+import os
 
 class sender_test(unittest.TestCase):
 
@@ -20,8 +21,12 @@ class sender_test(unittest.TestCase):
     def test_pre_process(self):
         self.assertTrue(sender.pre_process(2223,50) == {"apms":5,"temp":122.0})
     
-    def stream_data (self):
-        self.assertTrue(sender.streamData(1) == "No of Streams Completed = 1")
+    def test_stream_data(self):
+        self.assertTrue(sender.stream_data(1) == "No of Streams Completed = 1")
+    
+    def test_main(self):
+        result = os.system("python sender.py")
+        self.assertEqual(result, 0)
 
 if __name__ == '__main__':
   unittest.main()

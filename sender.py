@@ -18,10 +18,10 @@ def pre_process(a2d_data,temp_in_C):
     data_dict.update({"temp":celcius_to_Farenheit_convertor(temp_in_C)})
     return data_dict
 
-def streamData(number):
+def stream_data(number):
     for i in range(number):
         print(pre_process(get_12B_A2D_data(),get_temp_data_in_celcius()))
     return "No of Streams Completed = {}".format(number)
 
 if __name__ == "__main__":
-    streamData(50)
+    stream_data(50)
