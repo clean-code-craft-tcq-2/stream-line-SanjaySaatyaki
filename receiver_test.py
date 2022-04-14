@@ -4,7 +4,7 @@ import receiver
 
 class receiver_test(unittest.TestCase):
 
-    def test_minimum_temperature_sample(self)
+    def test_minimum_temperature_sample(self):
         self.assertTrue(receiver.get_minimum_temperature_sample([109.4,73.4,102.2,158.0,96.8])==73.4)
     
     def test_maximum_temperature_sample(self):
