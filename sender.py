@@ -1,4 +1,5 @@
 import random
+import json
 
 def get_12B_A2D_data():
     return random.randint(0, 4094)
@@ -16,7 +17,7 @@ def pre_process(a2d_data,temp_in_C):
     data_dict = {}
     data_dict.update({"apms":a2D_12BtoAmps_convertor(a2d_data)})
     data_dict.update({"temp":celcius_to_Farenheit_convertor(temp_in_C)})
-    return data_dict
+    return json.dumps(data_dict)
 
 def stream_data(number):
     for i in range(number):
