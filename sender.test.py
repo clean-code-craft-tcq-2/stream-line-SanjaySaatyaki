@@ -1,8 +1,7 @@
-
-
 import unittest
 import sender
 import os
+import json
 
 class sender_test(unittest.TestCase):
 
@@ -19,7 +18,7 @@ class sender_test(unittest.TestCase):
         self.assertTrue(sender.celcius_to_Farenheit_convertor(50) == 122.0)
     
     def test_pre_process(self):
-        self.assertTrue(sender.pre_process(2223,50) == {"apms":5,"temp":122.0})
+        self.assertTrue(sender.pre_process(2223,50) == json.dumps({"apms":5,"temp":122.0}))
     
     def test_stream_data(self):
         self.assertTrue(sender.stream_data(1) == "No of Streams Completed = 1")
