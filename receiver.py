@@ -1,5 +1,6 @@
 import sender
 import json 
+
 def get_minimum_temperature_sample(temp_list):
     return min(temp_list)
     
@@ -62,7 +63,7 @@ def get_data_from_console():
         if (len(amps_list)and len(temp_list)==6):
             print(amps_list,temp_list)
             min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp = compute_statistics(amps_list, temp_list)
-            return('Min_Amps:{}\tMax_Amps:{}\tMin_temp:{}\tMax_temp:{}\tMoving_Average_Amps:{}\tMoving_Average,Temp:{}'.format(min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp))
+        return('Min_Amps:{}\tMax_Amps:{}\tMin_temp:{}\tMax_temp:{}\tMoving_Average_Amps:{}\tMoving_Average,Temp:{}'.format(min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp))
 
 
 
