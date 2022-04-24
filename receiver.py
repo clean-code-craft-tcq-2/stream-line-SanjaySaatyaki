@@ -1,5 +1,5 @@
 import sender
-
+import json 
 def get_minimum_temperature_sample(temp_list):
     return min(temp_list)
     
