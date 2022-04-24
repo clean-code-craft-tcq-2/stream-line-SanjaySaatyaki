@@ -27,6 +27,7 @@ jobs:
       - name: Run and collect coverage
         run: |
           coverage run --branch sender.test.py
+          coverage run --branch receiver_test.py
           coverage html
           coverage report
       - name: Upload coverage
