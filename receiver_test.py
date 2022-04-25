@@ -1,6 +1,11 @@
 import unittest
 import receiver
-
+data = '''{"apms": 4, "temp": 100.4}
+    {"apms": 6, "temp": 131.0}
+    {"apms": 3, "temp": 138.2}
+    {"apms": 9, "temp": 167.0}
+    {"apms": 10, "temp": 167.0}
+    {"apms": 0, "temp": 123.8}'''
 
 class receiver_test(unittest.TestCase):
 
@@ -25,7 +30,8 @@ class receiver_test(unittest.TestCase):
     def test_compute_statistics(self):
          self.assertTrue(receiver.compute_statistics([4, 6, 3, 9, 10, 0],[100.4, 131.0, 138.2, 167.0, 167.0, 123.8])==(0 ,10, 100.4, 167.0, [6.4, 5.6],[140.72, 145.4]))
         
-        
+    def test_process_data_from_sender(self):
+        self.assertTrue(receiver.process_data_from_sender(data)==(0 ,10, 100.4, 167.0, [6.4, 5.6],[140.72, 145.4]))   
        
         
     
