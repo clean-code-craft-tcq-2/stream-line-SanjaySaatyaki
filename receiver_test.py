@@ -22,6 +22,12 @@ class receiver_test(unittest.TestCase):
     def test_temperature_movingAveragevalue(self):
         self.assertTrue(receiver.temperature_movingAveragevalue([100.4, 131.0, 138.2, 167.0, 167.0, 123.8],5)==[140.72, 145.4])
         
+    def test_compute_statistics(self):
+         self.assertTrue(receiver.compute_statistics([4, 6, 3, 9, 10, 0],[100.4, 131.0, 138.2, 167.0, 167.0, 123.8])==(0 ,10, 100.4, 167.0, [6.4, 5.6],[140.72, 145.4]))
+        
+        
+       
+        
     
     
   
