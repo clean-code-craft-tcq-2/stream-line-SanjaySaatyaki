@@ -1,5 +1,26 @@
 import sender
 import json 
+import sys
+
+
+def get_data_from_sender():
+    data = sys.stdin.read()
+    return data
+
+def process_data_from_sender(data):
+    data_list = data.split("\n")
+    amps_list = []
+    temp_list = []
+    for value in data_list:
+        json_data = json.loads(value)
+        amps_list.append(json_data['apms'])
+        temp_list.append(json_data['temp'])
+        if(len(amps_list) and len(temp_list)==6):
+            min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp = compute_statistics(amps_list, temp_list)
+            #print('Min_Amps:{}\tMax_Amps:{}\tMin_temp:{}\tMax_temp:{}\tMoving_Average_Amps:{}\tMoving_Average,Temp:{}'.format(min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp))
+    return min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp
+
+
 
 def get_minimum_temperature_sample(temp_list):
     return min(temp_list)
@@ -46,29 +67,10 @@ def compute_statistics(amps_list,temp_list):
 
     return min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp
 
-def get_data_from_console():
-    data = '''{"apms": 4, "temp": 100.4}
-    {"apms": 6, "temp": 131.0}
-    {"apms": 3, "temp": 138.2}
-    {"apms": 9, "temp": 167.0}
-    {"apms": 10, "temp": 167.0}
-    {"apms": 0, "temp": 123.8}'''
-    data_list = data.split("\n")
-    amps_list = []
-    temp_list = []
-    for value in data_list:
-        json_data = json.loads(value)
-        amps_list.append(json_data['apms'])
-        temp_list.append(json_data['temp'])
-        if (len(amps_list)and len(temp_list)==6):
-            print(amps_list,temp_list)
-            min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp = compute_statistics(amps_list, temp_list)
-        return('Min_Amps:{}\tMax_Amps:{}\tMin_temp:{}\tMax_temp:{}\tMoving_Average_Amps:{}\tMoving_Average,Temp:{}'.format(min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp))
-
-
-
 
 if __name__ == "__main__":
-    get_data_from_console()
+    data=get_data_from_sender()
+    process_data_from_sender(data)
+    
     
   
