@@ -7,7 +7,7 @@ def get_data_from_sender():
     data = sys.stdin.read()
     return data
 
-def process_data_from_sender(data,stream_len_value):
+def process_data_from_sender(data,streamvalue):
     data_list = data.split("\n")
     amps_list = []
     temp_list = []
@@ -15,7 +15,7 @@ def process_data_from_sender(data,stream_len_value):
         json_data = json.loads(value)
         amps_list.append(json_data['apms'])
         temp_list.append(json_data['temp'])
-        if(len(amps_list) and len(temp_list)==stream_len_value):
+        if(len(amps_list) and len(temp_list)==streamvalue):
             min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp = compute_statistics(amps_list, temp_list)
              #print('Min_Amps:{}\tMax_Amps:{}\tMin_temp:{}\tMax_temp:{}\tMoving_Average_Amps:{}\tMoving_Average,Temp:{}'.format(min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp))
     return min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp
@@ -70,7 +70,7 @@ def compute_statistics(amps_list,temp_list):
 
 if __name__ == "__main__":
     data=get_data_from_sender()
-    process_data_from_sender(data,stream_len_value)
+    process_data_from_sender(data,streamvalue)
     
     
   
