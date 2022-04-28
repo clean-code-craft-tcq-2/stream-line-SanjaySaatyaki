@@ -2,6 +2,8 @@ import sender
 import json 
 import sys
 
+stream_value=0
+
 
 def get_data_from_sender():
     data = sys.stdin.read()
