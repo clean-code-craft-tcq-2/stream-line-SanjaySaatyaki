@@ -13,6 +13,7 @@ def process_data_from_sender(data):
     data_list = data.split("\n")
     amps_list = []
     temp_list = []
+    data_list = [i for i in data_list if i]
     for value in data_list:
         json_data = json.loads(value)
         amps_list.append(json_data['apms'])
