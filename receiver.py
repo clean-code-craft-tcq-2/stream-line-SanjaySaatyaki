@@ -22,10 +22,8 @@ def process_data_from_sender(data):
             min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp = compute_statistics(amps_list, temp_list)
     return min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp
 
-
 def get_minimum_temperature_sample(temp_list):
     return min(temp_list)
-
 
 def get_maximum_temperature_sample(temp_list):
     return max(temp_list)
