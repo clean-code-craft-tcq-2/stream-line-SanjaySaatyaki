@@ -2,13 +2,12 @@ import sender
 import json 
 import sys
 
-
-
-
+#Reading the Sender data 
 def get_data_from_sender():
     data = sys.stdin.read()
     return data
 
+#Processing the Sender data and computing the Statistics
 def process_data_from_sender(data):
     data_list = data.split("\n")
     amps_list = []
@@ -21,17 +20,16 @@ def process_data_from_sender(data):
         temp_list.append(json_data['temp'])
         if(len(amps_list) and len(temp_list)==6):
             min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp = compute_statistics(amps_list, temp_list)
-             #print('Min_Amps:{}\tMax_Amps:{}\tMin_temp:{}\tMax_temp:{}\tMoving_Average_Amps:{}\tMoving_Average,Temp:{}'.format(min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp))
-    return min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp
-
+    return 'Min_Amps:{}\tMax_Amps:{}\tMin_temp:{}\tMax_temp:{}\tMoving_Average_Amps:{}\tMoving_Average_Temp:{}'.format(min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp)
 
 
 def get_minimum_temperature_sample(temp_list):
     return min(temp_list)
-    
+
+
 def get_maximum_temperature_sample(temp_list):
     return max(temp_list)
-    
+  
 def get_minimum_current_sample(amps_list):
     return min(amps_list)
     
@@ -58,8 +56,8 @@ def current_movingAveragevalue(amps_list,Size):
     index = index+1
   return current_movingAverage
 
+#Statistics Computation Min,Max and Moving Average 
 def compute_statistics(amps_list,temp_list):
-    
     min_amps = get_minimum_current_sample(amps_list)
     max_amps = get_maximum_current_sample(amps_list)
 
