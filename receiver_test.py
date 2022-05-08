@@ -31,7 +31,7 @@ class receiver_test(unittest.TestCase):
          self.assertTrue(receiver.compute_statistics([4, 6, 3, 9, 10, 0],[100.4, 131.0, 138.2, 167.0, 167.0, 123.8])==(0 ,10, 100.4, 167.0, [6.4, 5.6],[140.72, 145.4]))
         
     def test_process_data_from_sender(self):
-        self.assertTrue(receiver.process_data_from_sender(data)==(Min_Amps:0  Max_Amps:10  Min_temp:100.4  Max_temp:167.0  Moving_Average_Amps:[6.4, 5.6]  Moving_Average_Amps:[140.72, 145.4]))   
+        self.assertTrue(receiver.process_data_from_sender(data)==(0 ,10 ,100.4 ,167.0 ,[6.4, 5.6],[140.72, 145.4]))   
        
         
     
