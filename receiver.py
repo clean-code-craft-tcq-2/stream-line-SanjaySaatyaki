@@ -20,7 +20,7 @@ def process_data_from_sender(data):
         temp_list.append(json_data['temp'])
         if(len(amps_list) and len(temp_list)==6):
             min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp = compute_statistics(amps_list, temp_list)
-    return 'Min_Amps:{}\tMax_Amps:{}\tMin_temp:{}\tMax_temp:{}\tMoving_Average_Amps:{}\tMoving_Average_Temp:{}'.format(min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp)
+    return min_amps, max_amps, min_temp, max_temp, mov_avg_amps, mov_avg_temp
 
 
 def get_minimum_temperature_sample(temp_list):
